@@ -30,7 +30,7 @@ namespace game_in_console.Shoping
         /// </summary>
         public ShopItemsList[] itemsList = new ShopItemsList[itemslistL];
         public int ItemsListIndex;
-        public Items[] ItemTaple { get; } = { Items.none, Items.stick, Items.stone, Items.ironore, Items.flint, Items.coal, Items.IronSword };
+        public Items[] ItemTaple { get; set; } = { Items.none, Items.stick, Items.stone, Items.ironore, Items.flint, Items.coal, Items.IronSword };
         public int[] Con { get; } = { 0, 2, 3, 2, 2, 2, 1 };
         public int[] Cost { get; } = { 0, 10, 15, 20, 10, 15, 100 };
         public int[] Chance { get; } = { 0, 25, 20, 15, 25, 20, 10 };
@@ -199,22 +199,49 @@ namespace game_in_console.Shoping
         }
         public void BuyItem(int Index, bool buy)
         {
-            int NeedCoins = S_player.Coins - Cost[Index];
+            int NeedCoins = S_player.Coins - itemsList[Index].S_cost;
             switch (buy)
             {
                 case true:
-                    Console.WriteLine(S_NPC.ShopKeeperName + ": " + "thank you for purchaseing " + Con[Index] + " " + ItemTaple[Index] + " for " + Cost[Index]);
+                    Console.WriteLine(S_NPC.ShopKeeperName + ": " + "thank you for purchaseing " + itemsList[Index].S_Con + " " + itemsList[Index].name + " for " + itemsList[Index].S_cost);
                     break;
                 case false:
-                    Console.WriteLine(S_NPC.ShopKeeperName + ": " + "Sorry but you do not have enough coins you need " + Cost[Index] + " coins and you have " + S_player.Coins + " coins you need " + NeedCoins + " coins");
+                    Console.WriteLine(S_NPC.ShopKeeperName + ": " + "Sorry but you do not have enough coins you need " + itemsList[Index].S_cost + " coins and you have " + S_player.Coins + " coins you need " + NeedCoins + " coins");
                     break;
+            }
+        }
+        public void GetPlayerShopItems()
+        {
+            const int L = 0;
+            if (S_player.StoneW == true)
+            {
+                ItemTaple = new Items[L];
+                for (int i = 0; i < L; i++)
+                {
+                    ItemTaple[i] = Items.stone;
+                    ItemTaple[i] = Items.stick;
+                    ItemTaple[i] = Items.Wood;
+                    ItemTaple[i] = Items.coal;
+                    ItemTaple[i] = Items.StonePickaxe;
+                }
+            }
+            if (S_player.smeltingS == true)
+            {
+
+            }
+            if (S_player.alloysS == true)
+            {
+            }
+            if (S_player.anvil == true)
+            {
+
             }
         }
         public void DeleteingItems(int Index)
         {
-            ItemTaple[Index] = Items.none;
-            Con[Index] = 0;
-            Cost[Index] = 0;
+            itemsList[Index].name = Items.none;
+            itemsList[Index].S_Con = 0;
+            itemsList[Index].S_cost = 0;
         }
         public void Bye(Random RNG)
         {

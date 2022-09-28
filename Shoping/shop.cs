@@ -29,7 +29,6 @@ namespace game_in_console.Shoping
                     SetupShop(random);
                     FirstIn = false;
                 }
-                Console.WriteLine("");
                 string User = Console.ReadLine();
                 switch (converter.UserToShopOp(User))
                 {
@@ -78,7 +77,7 @@ namespace game_in_console.Shoping
                 S_player.GetItem(itemsList[ItemNum].name, itemsList[ItemNum].S_Con);
                 BuyItem(ItemNum, true);
                 //sub the coins form the player
-                S_player.Coins -= Cost[ItemNum];
+                S_player.Coins -= itemsList[ItemNum].S_cost;
                 //deleteing the items form the shop
                 DeleteingItems(ItemNum);
             }

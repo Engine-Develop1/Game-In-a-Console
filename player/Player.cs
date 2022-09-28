@@ -72,9 +72,9 @@ namespace game_in_console.player
             }
             if (GetIn != true)
             {
-                InvIndex++;
                 Inv[InvIndex] = AddItem;
                 InvCon[InvIndex] = con;
+                InvIndex++;
             }
         }
         public void GetPlayerInv()

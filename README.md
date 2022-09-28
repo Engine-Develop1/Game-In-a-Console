@@ -17,6 +17,10 @@ you can mine ores, cut wood and go in a dungeon and fight enemys and bosses
 
 ## my tasks forward with this project
 - [x] Make the crafting system more clean 
+- [ ] fix the shop system
+  - [ ] 1. clean code
+  - [ ] 2. add more item to the table of item
+  - [ ] 3. make the database more clean
 - [ ] Make the dungeon generation more user friendly and more clean
 - [ ] Make more content
 - [ ] make a save system!!!

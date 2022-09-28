@@ -49,9 +49,41 @@ namespace game_in_console.player
             SkillsBase.speed = 2;
             SkillsBase.dodgeC = 20;
         }
+        public void LevelUp(int level)
+        {
 
+        }
+        public void GetItem(Items AddItem, int con)
+        {
+            bool GetIn = false;
+            for (int i = 0; i < InvIndex; i++)
+            {
+                if (Inv[i] == AddItem)
+                {
+                    InvCon[i] += con;
+                    GetIn = true;
+                }
+                if (Inv[i] == Items.none)
+                {
+                    Inv[i] = AddItem;
+                    InvCon[i] = con;
+                    GetIn = true;
+                }
+            }
+            if (GetIn != true)
+            {
+                InvIndex++;
+                Inv[InvIndex] = AddItem;
+                InvCon[InvIndex] = con;
+            }
+        }
         public void GetPlayerInv()
         {
+            Console.WriteLine("you have equipped");
+            Console.WriteLine("sword:" + Gear.MainHand);
+            Console.WriteLine("Pickaxe:" + PTools.Pickaxe);
+            Console.WriteLine("Axe:" + PTools.Axe);
+            Console.WriteLine("torch:" + PTools.torch);
             Console.WriteLine("you have");
             for (int i = 0; i < InvIndex; i++)
             {

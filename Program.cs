@@ -76,12 +76,15 @@ namespace game_in_console
             if(PlayerName == "the wild" || PlayerName == "The Wild" || PlayerName == "wild")
             {
                 Console.WriteLine("you can no longer hear the voice");
+                Console.Write("peass any key to con");
+                Console.ReadKey();
                 Console.WriteLine("unknown voice:" + "YOU!");
                 Console.WriteLine("unknown voice:" + "how are you");
+                
                 Console.WriteLine("you:" + "what is that?");
                 Console.WriteLine("unknown voice:" + "you have now been banished form this place");
-                Console.WriteLine("another unknown voice:" + "ok then i WILL find the human my self");
-                Console.WriteLine("unknown voice:" + "HAHA... i will see forward to that moment and i will kill you both if i need to");
+                Console.WriteLine("another unknown voice:" + "ok then i WILL find the thing my self");
+                Console.WriteLine("unknown voice:" + "HAHA... i will see forward to that moment and i will kill you, if i need to");
                 Console.WriteLine("unknown voice:" + "MY SELF!!");
             }
             Start();
@@ -106,10 +109,10 @@ namespace game_in_console
         {
             Player.UpdatePlayer();
             if (Console.CapsLock == true)
-                Console.WriteLine("Game in a console with CapsLock");
+                Console.Title ="Game in a console with CapsLock";
             else
-                Console.WriteLine("Game in a console");
-            string User = Console.ReadLine();
+                Console.Title = "Game in a console";
+            string User = Console.ReadLine().ToLower();
             if (settings.Settings.DunDev)
                 User = "StartDun";
             switch (converter.UserToStartOp(User))
@@ -131,7 +134,7 @@ namespace game_in_console
                     Console.WriteLine(Player.Coins);
                     break;
                 case StartOp.Shop:
-                    Shop.ShopStart(true, false);
+                    Shop.ShopStart();
                     break;
                 case StartOp.Inv:
                     Player.GetPlayerInv();
@@ -168,7 +171,6 @@ namespace game_in_console
                 EnC = true;
             }
             string Help = @"";
-            string WCIC = "\r\n";
             string UserCraft = Console.ReadLine();
             switch (converter.UserToCraftOp(UserCraft))
             {

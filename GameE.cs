@@ -39,10 +39,6 @@ namespace GameEMain
         public Shop Shop { get; set; }
         public NPCNames NPCNames { get; set; }
         public OtherSystem OtherSystem { get; set; }
-        public Items[] Taple { get; } = { Items.none, Items.stick, Items.stone, Items.ironore, Items.flint, Items.coal, Items.IronSword};
-        public int[] Con { get; } = { 0, 2, 3, 2, 2, 2, 1 };
-        public int[] Cost { get; } = { 0, 10, 15, 20, 10, 15, 100 };
-        public int[] Chance { get; } = { 0, 25, 20, 15, 25, 20, 10};
         public void Start()
         {
             #region Get Stuff
@@ -64,9 +60,10 @@ namespace GameEMain
                 C_Player = Player
             };
             //shop
-            Shop = new Shop{
+            Shop = new Shop {
                 S_player = Player,
-                S_NPC = NPCNames
+                S_NPC = NPCNames,
+                converter = converter
             };
             //dun
             Dun = new Dun{

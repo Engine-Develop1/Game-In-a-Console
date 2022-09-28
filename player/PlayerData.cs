@@ -28,34 +28,6 @@ namespace game_in_console.player
         public int InvIndex = 0;
         public int Coins = 50;
         public int Level = 0;
-        public void LevelUp(int level)
-        {
-            
-        }
-        public void GetItem(Items AddItem, int con)
-        {
-            bool GetIn = false;
-            for (int i = 0; i < InvIndex; i++)
-            {
-                if(Inv[i] == AddItem)
-                {
-                    InvCon[i] += con;
-                    GetIn = true;
-                }
-                if(Inv[i] == Items.none)
-                {
-                    Inv[i] = AddItem;
-                    InvCon[i] = con;
-                    GetIn = true;
-                }
-            }
-            if(GetIn != true)
-            {
-                InvIndex++;
-                Inv[InvIndex] = AddItem;
-                InvCon[InvIndex] = con;
-            }
-        }
         /// <summary>
         /// 
         /// </summary>

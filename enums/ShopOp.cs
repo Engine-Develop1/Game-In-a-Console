@@ -6,7 +6,6 @@
         WCIB,
         GO,
         buy,
-        wcidih,
         help
     }
 }

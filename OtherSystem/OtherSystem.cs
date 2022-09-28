@@ -270,7 +270,6 @@ namespace game_in_console.otherSystem
             }
 
         }
-        bool Done;
         int Timer;
         public void TakeTime(int Start_time, int Distime)
         {
@@ -278,11 +277,7 @@ namespace game_in_console.otherSystem
             string User = Console.ReadLine();
             if (User == "done")
                 Console.WriteLine("here " + Timer + "Minutes");
-            if (Timer <= DateTime.Now.Minute)
-            {
-                Done = true;
-            }
-            else
+            if (Timer >= DateTime.Now.Minute)
                 TakeTime(Start_time, Distime);
         }
         public void Result(Items[] ItemPool, int[] ItemPoolCon, int[] ItemPoolChance)

@@ -12,6 +12,26 @@ namespace game_in_console
 {
     public class Converter
     {
+        public ShopOp UserToShopOp(string user)
+        {
+            ShopOp Re = ShopOp.none;
+            switch (user)
+            {
+                case "WCIB":
+                    Re = ShopOp.WCIB;
+                    break;
+                case "GO":
+                    Re = ShopOp.GO;
+                    break;
+                case "buy":
+                    Re = ShopOp.buy;
+                    break;
+                case "help":
+                    Re = ShopOp.help;
+                    break;
+            }
+            return Re;
+        }
         public StartOp UserToStartOp(string user)
         {
             StartOp Re = StartOp.none;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using game_in_console.player;
+using game_in_console.otherSystem;
 using System.Text;
 
 namespace game_in_console.NPC.Name
@@ -20,6 +21,19 @@ namespace game_in_console.NPC.Name
         public void BolvarWL(string mess)
         {
             Console.WriteLine(_1NPCName + ": " + mess);
+        }
+        public void TheWildNameDialog()
+        {
+            WL("you can no longer hear the voice");
+            Console.Write("peass any key to con");
+            Console.ReadKey();
+            WL("unknown voice:" + "YOU!!!!");
+            WL("unknown voice:" + "how are you");
+            WL("you:" + "what is that?");
+            WL("unknown voice:" + "you have now been banished form this place");
+            WL("another unknown voice:" + "ok then i WILL find the thing my self");
+            WL("unknown voice:" + "HAHA... i will see forward to that moment and i will kill you, if i need to");
+            WL("unknown voice:" + "MY SELF!!");
         }
         public void BolvarDialog(int Dialog)
         {
@@ -54,6 +68,7 @@ namespace game_in_console.NPC.Name
                 BolvarWL("if you want to go there you need to train for it");
                 BolvarWL("get better gear by getting materials and crafting them into something");
                 BolvarWL("here is my old axe, try to get some wood in the forest");
+                player.GetItem(enums.Items.an_old_axe_form_Bolvar, 1);
                 Console.WriteLine(@"say ""shop"" to go to the shop");
             }
         }

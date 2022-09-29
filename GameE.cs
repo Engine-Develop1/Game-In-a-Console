@@ -10,7 +10,7 @@ using game_in_console.enums;
 using game_in_console.player;
 namespace GameEMain
 {
-    public class GameE
+    public class GameE : SystemDataBase
     {
         public string TownMap { get; } =
           @"    Shop             Craft                          " + "\n" +
@@ -52,8 +52,8 @@ namespace GameEMain
             Player.gear = gear;
             Player.SetPLayerD();
             //npc
-            NPCNames = new NPCNames{
-                player = Player
+            NPCNames = new NPCNames {
+                player = Player,
             };
             //craft
             craft = new CraftItems{

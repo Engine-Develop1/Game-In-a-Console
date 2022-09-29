@@ -181,6 +181,8 @@ namespace game_in_console.otherSystem
                     player.UpdatePlayer();
                     switch (Pickaxe)
                     {
+                        case Items.none:
+                            break;
                         case Items.WoodenPickaxe:
                             player.GetItem(Items.Piece_of_wood, 2);
                             break;

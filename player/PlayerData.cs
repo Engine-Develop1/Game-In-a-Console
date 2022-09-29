@@ -16,6 +16,7 @@ namespace game_in_console.player
     public class PlayerData
     {
         public int BronzeCount;
+        public int Hp;
         public bool WoodW = true, StoneW, smeltingS, alloysS, anvil;
         public Skills SkillsBase;
         public Skills Skills;
@@ -28,6 +29,10 @@ namespace game_in_console.player
         public int InvIndex = 0;
         public int Coins = 50;
         public int Level = 0;
+        public void TakeHp()
+        {
+
+        }
         /// <summary>
         /// 
         /// </summary>

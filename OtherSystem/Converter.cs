@@ -46,6 +46,15 @@ namespace game_in_console
                 case "StartDun":
                     Re = StartOp.StartDun;
                     break;
+                case "SD":
+                    Re = StartOp.StartDun;
+                    break;
+                case "sd":
+                    Re = StartOp.StartDun;
+                    break;
+                case "startdun":
+                    Re = StartOp.StartDun;
+                    break;
                 case "Run":
                     Re = StartOp.Run;
                     break;

@@ -181,8 +181,6 @@ namespace game_in_console.otherSystem
                     player.UpdatePlayer();
                     switch (Pickaxe)
                     {
-                        case Items.none:
-                            break;
                         case Items.WoodenPickaxe:
                             player.GetItem(Items.Piece_of_wood, 2);
                             break;
@@ -303,7 +301,7 @@ namespace game_in_console.otherSystem
                 con = ItemPoolCon[2];
             }
             if (Re == Items.stone)
-                player.StoneW = true;
+                player.SetCraftingStations(1);
             bool Done = false;
             Console.WriteLine("you got " + con + " " + Re);
             for (int i = 0; i < player.InvIndex; i++)

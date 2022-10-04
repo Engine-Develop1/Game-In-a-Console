@@ -3,6 +3,7 @@ using game_in_console.Shoping;
 using game_in_console.NPC.Name;
 using game_in_console.dun;
 using game_in_console.dun.enemys;
+using game_in_console.data.SaveSystem;
 using game_in_console.data.items;
 using game_in_console;
 using game_in_console.otherSystem;
@@ -10,7 +11,7 @@ using game_in_console.enums;
 using game_in_console.player;
 namespace GameEMain
 {
-    public class GameE : SystemDataBase
+    public class GameE
     {
         public string TownMap { get; } =
           @"    Shop             Craft                          " + "\n" +
@@ -39,9 +40,14 @@ namespace GameEMain
         public Shop Shop { get; set; }
         public NPCNames NPCNames { get; set; }
         public OtherSystem OtherSystem { get; set; }
+        public save save { get; set; }
         public void Start()
         {
             #region Get Stuff
+            //save
+            save = new save {
+                NPC = NPCNames,
+            };
             //converter
             converter = new Converter();
             //gear
@@ -52,8 +58,8 @@ namespace GameEMain
             Player.gear = gear;
             Player.SetPLayerD();
             //npc
-            NPCNames = new NPCNames {
-                player = Player,
+            NPCNames = new NPCNames{
+                player = Player
             };
             //craft
             craft = new CraftItems{

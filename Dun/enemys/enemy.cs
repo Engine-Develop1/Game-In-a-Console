@@ -34,10 +34,8 @@ namespace game_in_console.dun.enemys
     {
         public BossData[] BossData = new BossData[100];
         public EnemyData[] Data = new EnemyData[100];
-        public EnemyData[] MiniBossData = new EnemyData[100];
         int enemyIndex = 0;
         int BossDataIndex = 0;
-        int MiniBossDataIndex = 0;
         public void Addenemy(string name, int Hp, int Dps, int chance, int DunLevel, int Level, int dodge)
         {
             Data[enemyIndex].name = name;
@@ -57,17 +55,6 @@ namespace game_in_console.dun.enemys
             BossData[BossDataIndex].DunLevel = DunLevel;
             BossDataIndex++;
         }
-        public void AddMiniBoss(string name, int Hp, int Dps, int chance, int DunLevel, int Level, int dodge)
-        {
-            MiniBossData[MiniBossDataIndex].name = name;
-            MiniBossData[MiniBossDataIndex].Hp = Hp;
-            MiniBossData[MiniBossDataIndex].Dps = Dps;
-            MiniBossData[MiniBossDataIndex].HitChance = chance;
-            MiniBossData[MiniBossDataIndex].DunLevel = DunLevel;
-            MiniBossData[MiniBossDataIndex].StartLevel = Level;
-            MiniBossData[MiniBossDataIndex].dodge = dodge;
-            MiniBossDataIndex++;
-        }
     }
     public class Enemy
     {
@@ -77,9 +64,6 @@ namespace game_in_console.dun.enemys
             data.Addenemy("Rat", 10, 1, 25, 1, 1, 50);
             data.Addenemy("Skeleton", 25, 2, 50, 2, 1,25);
             data.Addenemy("Mimic", 50, 3, 75, -1, 2,25);
-            data.AddMiniBoss("Big Rat", 25, 5, 60, 1, 2,25);
-            data.AddMiniBoss("mini wilds", 75, 10, 60, -6, 13,75);
-            data.AddBoss("The Wild!", 500, 25, 12);
         }
         public static EnemyData GetEnemy(string name)
         {

@@ -64,6 +64,7 @@ namespace game_in_console
         string PlayerName;
         static void Main()
         {
+            Console.WriteLine("Hello you there what is your name?");
             //Console.WriteLine("who maked this? start with a by and a name ilke this...");
             Console.Title = "Game in a console";
             Program program = new Program(); 
@@ -71,17 +72,26 @@ namespace game_in_console
         }
         public void PStart()
         {
-            Start();
-            WL("Hello you there what is your name?");
             PlayerName = Console.ReadLine();
             if(PlayerName == "the wild" || PlayerName == "The Wild" || PlayerName == "wild")
             {
-                NPCNames.TheWildNameDialog();
-            PlayerName = "Lixs";
+                Console.WriteLine("you can no longer hear the voice");
+                Console.Write("peass any key to con");
+                Console.ReadKey();
+                Console.WriteLine("unknown voice:" + "YOU!");
+                Console.WriteLine("unknown voice:" + "how are you");
+                
+                Console.WriteLine("you:" + "what is that?");
+                Console.WriteLine("unknown voice:" + "you have now been banished form this place");
+                Console.WriteLine("another unknown voice:" + "ok then i WILL find the thing my self");
+                Console.WriteLine("unknown voice:" + "HAHA... i will see forward to that moment and i will kill you, if i need to");
+                Console.WriteLine("unknown voice:" + "MY SELF!!");
             }
+            Start();
             if (PlayerName == "devB" || PlayerName == "BEsBB")
                 new Dev(Player, Password, PlayerName);
-            To();
+            if (PlayerName != "skipto" || PlayerName == "devB" || PlayerName == "BEsBB")
+                To();
             Update();
         }
         void To()
@@ -92,18 +102,29 @@ namespace game_in_console
                 NPCNames.BolvarDialog(0);
                 NPCNames.BolvarDialog(1);
             }
-            WL("there is a thing coming your way");
-            WL(NPCNames.PlayerHelperName + ": hello " + NPCNames.PlayerName + " im "+ NPCNames.PlayerHelperName + " and i am here to help you just say help to me if you need help");
+            Console.WriteLine("there is a thing coming your way");
+            Console.WriteLine(NPCNames.PlayerHelperName + ": hello " + NPCNames.PlayerName + " im "+ NPCNames.PlayerHelperName + " and i am here to help you just say help to me if you need help");
         }
+        bool StopApp = false;
         void Update()
         {
             Player.UpdatePlayer();
+            if (Console.CapsLock == true)
+                Console.Title ="Game in a console with CapsLock";
+            else
+                Console.Title = "Game in a console";
             string User = Console.ReadLine().ToLower();
             if (settings.Settings.DunDev)
                 User = "StartDun";
             switch (converter.UserToStartOp(User))
             {
+                case StartOp.save:
+
+                    break;
                 case StartOp.none:
+                    break;
+                case StartOp.info:
+                    Player.Info();
                     break;
                 case StartOp.mine:
                     OtherSystem.Mine(Player.PTools.Pickaxe);
@@ -117,7 +138,7 @@ namespace game_in_console
                 case StartOp.Run:
                     break;
                 case StartOp.How_many_coins_go_i_have:
-                    WL(Player.Coins);
+                    Console.WriteLine(Player.Coins);
                     break;
                 case StartOp.Shop:
                     Shop.ShopStart();
@@ -129,19 +150,23 @@ namespace game_in_console
                     Craft(true);
                     break;
                 case StartOp.WorldMap:
-                    WL(WorldMap);
+                    Console.WriteLine(WorldMap);
                     break;
                 case StartOp.TownMap:
-                    WL(TownMap);
+                    Console.WriteLine(TownMap);
                     break;
                 case StartOp.speed:
-                    if(settings.Settings.Dev)
+                    if (settings.Settings.Dev)
                     {
-                        WL("what speed");
-                    Player.SkillsBase.speed = int.Parse(Console.ReadLine());
+                        Console.WriteLine("what speed");
+                        Player.SkillsBase.speed = int.Parse(Console.ReadLine());
                     }
                     break;
                 case StartOp.help:
+                    Console.WriteLine();
+                    break;
+                case StartOp.end:
+                    StopApp = true;
                     break;
             }
             Player.UpdatePlayer();
@@ -152,7 +177,7 @@ namespace game_in_console
         {
             if (EnC == false)
             {
-                WL(@"what to do say ""help"" and get help");
+                Console.WriteLine(@"what to do say ""help"" and get help");
                 EnC = true;
             }
             string Help = @"";
@@ -162,11 +187,11 @@ namespace game_in_console
                 case CraftOp.none:
                     break;
                 case CraftOp.GO:
-                    WL("exit craft menu");
+                    Console.WriteLine("exit craft menu");
                     EnC = false;
                     break;
                 case CraftOp.craft:
-                    WL("what to craft");
+                    Console.WriteLine("what to craft");
                     string HTC = Console.ReadLine();
                     craft.Craft(HTC);
                     break;
@@ -256,12 +281,12 @@ namespace game_in_console
                     }
                     //2. see what items is in there
                     //3. print
-                    WL("for loop test");
+                    Console.WriteLine("for loop test");
                     break;
                 case CraftOp.help:
-                    WL("what do you need help with?");
-                    WL("the over all crafting system (system)");
-                    WL("how do i craft stuff (craft)");
+                    Console.WriteLine("what do you need help with?");
+                    Console.WriteLine("the over all crafting system (system)");
+                    Console.WriteLine("how do i craft stuff (craft)");
                     string user = Console.ReadLine();
                     switch (converter.UserToHelpCraft(user))
                     {
@@ -285,7 +310,7 @@ namespace game_in_console
         }
         public void SystemHelp()
         {
-            WL("the crafting system is in a ranks called crafting stations \r\n" +
+            Console.WriteLine("the crafting system is in a ranks called crafting stations \r\n" +
                               "there is 5 ranks in the system there is...\r\n" +
                               "wood working,\r\n" +
                               "stone working,\r\n" +
@@ -300,7 +325,7 @@ namespace game_in_console
         }
         public void CraftHelp()
         {
-            WL("you can say (craft) in the crafting meun and you make a item \r\n" +
+            Console.WriteLine("you can say (craft) in the crafting meun and you make a item \r\n" +
                               "if you need to see what you can make say (WCIC(what can i craft))\r\n" +
                               "and there will come a list of item you can make with the items in your inventory like this\r\n" +
                               "with the stone works(UL) stone pickaxe for 3 stone and 2 sticks,\r\n" +

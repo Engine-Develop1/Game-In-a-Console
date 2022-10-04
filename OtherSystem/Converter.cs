@@ -37,6 +37,30 @@ namespace game_in_console
             StartOp Re = StartOp.none;
             switch (user)
             {
+                case "Save":
+                    Re = StartOp.save;
+                    break;
+                case "save":
+                    Re = StartOp.save;
+                    break;
+                case "End":
+                    Re = StartOp.end;
+                    break;
+                case "end":
+                    Re = StartOp.end;
+                    break;
+                case "stop":
+                    Re = StartOp.end;
+                    break;
+                case "Stop":
+                    Re = StartOp.end;
+                    break;
+                case "info":
+                    Re = StartOp.info;
+                    break;
+                case "Info":
+                    Re = StartOp.info;
+                    break;
                 case "Help":
                     Re = StartOp.help;
                     break;
@@ -44,15 +68,6 @@ namespace game_in_console
                     Re = StartOp.help;
                     break;
                 case "StartDun":
-                    Re = StartOp.StartDun;
-                    break;
-                case "SD":
-                    Re = StartOp.StartDun;
-                    break;
-                case "sd":
-                    Re = StartOp.StartDun;
-                    break;
-                case "startdun":
                     Re = StartOp.StartDun;
                     break;
                 case "Run":

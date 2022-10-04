@@ -14,7 +14,7 @@ namespace game_in_console
 {
     public class Dev
     {
-        public bool DevAA { get; } = false;
+        public bool DevAA { get; } = true;
         public Dev(Player Player, int password, string playername)
         {
             if (DevAA == true)
@@ -30,12 +30,8 @@ namespace game_in_console
                     Player.GetItem(Items.stick, 999);
                     Player.GetItem(Items.stone, 999);
                     Player.GetItem(Items.ironore, 999);
-                    Player.GetItem(Items.StonePickaxe, 1);
-                    Player.GetItem(Items.StoneAxe, 1);
-                    Player.StoneW = true;
-                    Player.smeltingS = true;
-                    Player.alloysS = true;
-                    Player.anvil = true;
+                    Player.GetItem(Items.IronAxe, 1);
+                    Player.GetItem(Items.IronPickaxe, 1);
                 }
                 else if (Number == password.ToString() || Number == "dm")
                 {

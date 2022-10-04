@@ -11,13 +11,15 @@ using game_in_console;
 using game_in_console.otherSystem;
 using game_in_console.enums;
 using game_in_console.player;
-namespace game_in_console.player
+using game_in_console.player.databases;
+namespace game_in_console.player.databases
 {
-    public class PlayerData
+    public class PlayerData : level
     {
         public int BronzeCount;
-        public bool WoodW = true, StoneW, smeltingS, alloysS, anvil;
+
         public Skills SkillsBase;
+        public Skills LevelSkills;
         public Skills Skills;
         public PlayerGear Gear;
         public Gear gear;
@@ -27,7 +29,99 @@ namespace game_in_console.player
         public int[] InvCon;
         public int InvIndex = 0;
         public int Coins = 50;
-        public int Level = 0;
+        public void GetPlayerInv()
+        {
+            Console.WriteLine("you have");
+            for (int i = 0; i < InvIndex; i++)
+            {
+                Console.WriteLine(InvCon[i].ToString() + " " + Inv[i].ToString() + ", ");
+            }
+        }
+        public void Info()
+        {
+            Console.WriteLine("you have equipped");
+            Console.WriteLine("sword:" + Gear.MainHand);
+            Console.WriteLine("Pickaxe:" + PTools.Pickaxe);
+            Console.WriteLine("Axe:" + PTools.Axe);
+            Console.WriteLine("torch:" + PTools.torch);
+            Console.WriteLine("Crafting Stations");
+            Console.WriteLine("stoneW:" + StoneW);
+            Console.WriteLine("smeltingS:" + smeltingS);
+            Console.WriteLine("alloysS:" + alloysS);
+            Console.WriteLine("anvil:" + anvil);
+            Console.WriteLine("Level:" + Level);
+        }
+        #region Crafting Stations
+        bool StoneW;
+        bool smeltingS;
+        bool alloysS;
+        bool anvil;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Index">1 = stoneW, 2 = smeltingS, 3 = alloysS, 4 = anvil</param>
+        public CraftingStations GetCraftingStations(int Index)
+        {
+            CraftingStations Res = CraftingStations.WoodWork;
+            switch (Index)
+            {
+                case 1:
+                    Res = CraftingStations.StoneWorkshop;
+                    break;
+                case 2:
+                    Res = CraftingStations.SmeltingStation;
+                    break;
+                case 3:
+                    Res = CraftingStations.AlloySmelt;
+                    break;
+                case 4:
+                    Res = CraftingStations.Anvil;
+                    break;
+            }
+            return Res;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Index">1 = stoneW, 2 = smeltingS, 3 = alloysS, 4 = anvil</param>
+        public void SetCraftingStations(int Index)
+        {
+            switch (Index)
+            {
+                default:
+                    StoneW = true;
+                    smeltingS = true;
+                    alloysS = true;
+                    anvil = true;
+                    break;
+                case 1:
+                    StoneW = true;
+                    break;
+                case 2:
+                    smeltingS = true;
+                    break;
+                case 3:
+                    alloysS = true;
+                    break;
+                case 4:
+                    anvil = true;
+                    break;
+            }
+        }
+        public CraftingStations WhatCraftingStations()
+        {
+            if (anvil)
+                return CraftingStations.Anvil;
+            else if (alloysS)
+                return CraftingStations.AlloySmelt;
+            else if (smeltingS)
+                return CraftingStations.SmeltingStation;
+            else if (StoneW)
+                return CraftingStations.StoneWorkshop;
+            else
+                return CraftingStations.WoodWork;
+        }
+        #endregion
         /// <summary>
         /// 
         /// </summary>
@@ -93,12 +187,6 @@ gear.GetGearData(ArmorTypes.legs).dodgeC;
             }
             return Re;
         }
-    }
-    public class SwordSkills
-    {
-        public int Dps;
-        public int BlockChance;
-        public int HitChance;
     }
     public class Tools
     {

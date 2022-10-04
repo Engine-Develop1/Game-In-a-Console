@@ -6,6 +6,7 @@ using game_in_console.enums;
 using game_in_console.dun.enemys;
 using GameEMain;
 using game_in_console.data.items;
+using game_in_console.player.databases;
 namespace game_in_console.player
 {
     public class Player : PlayerData
@@ -14,6 +15,7 @@ namespace game_in_console.player
         {
             Skills = new Skills();
             SkillsBase = new Skills();
+            LevelSkills = new Skills();
             PTools = new Tools();
             Gear = new PlayerGear();
             int SpaceInInv = 50;
@@ -30,14 +32,14 @@ namespace game_in_console.player
         public void UpdatePlayer()
         {
             PTools = GetTools();
-            Skills.Hp = UpdateArmor(0, gear) + SkillsBase.Hp;
-            Skills.armor = UpdateArmor(1, gear) + SkillsBase.armor;
-            Skills.Strength = UpdateArmor(2, gear) + SkillsBase.Strength;
-            Skills.Agility = UpdateArmor(3, gear) + SkillsBase.Agility;
-            Skills.speed = UpdateArmor(4, gear) + SkillsBase.speed;
-            Skills.dodgeC = UpdateArmor(5, gear) + SkillsBase.dodgeC;
+            Skills.Hp = UpdateArmor(0, gear) + SkillsBase.Hp + LevelSkills.Hp;
+            Skills.armor = UpdateArmor(1, gear) + SkillsBase.armor + LevelSkills.armor;
+            Skills.Strength = UpdateArmor(2, gear) + SkillsBase.Strength + LevelSkills.Strength;
+            Skills.Agility = UpdateArmor(3, gear) + SkillsBase.Agility + LevelSkills.Agility;
+            Skills.speed = UpdateArmor(4, gear) + SkillsBase.speed + LevelSkills.speed;
+            Skills.dodgeC = UpdateArmor(5, gear) + SkillsBase.dodgeC + LevelSkills.dodgeC;
             if (BronzeCount == 2)
-                alloysS = true;
+                SetCraftingStations(3);
         }
         public void SetPLayerD()
         {
@@ -51,7 +53,18 @@ namespace game_in_console.player
         }
         public void LevelUp(int level)
         {
-
+            if(LevelSkills.Hp <= 300)
+                SkillsBase.Hp += 10;
+            if(level == 20)
+                SkillsBase.armor = 1;
+            if (level == 25)
+                SkillsBase.Strength = 1;
+            if (level == 20)
+                SkillsBase.Agility = 3;
+            if (level == 20)
+                SkillsBase.speed = 3;
+            if (level == 20)
+                SkillsBase.dodgeC = 40;
         }
         public void GetItem(Items AddItem, int con)
         {
@@ -75,19 +88,6 @@ namespace game_in_console.player
                 Inv[InvIndex] = AddItem;
                 InvCon[InvIndex] = con;
                 InvIndex++;
-            }
-        }
-        public void GetPlayerInv()
-        {
-            Console.WriteLine("you have equipped");
-            Console.WriteLine("sword:" + Gear.MainHand);
-            Console.WriteLine("Pickaxe:" + PTools.Pickaxe);
-            Console.WriteLine("Axe:" + PTools.Axe);
-            Console.WriteLine("torch:" + PTools.torch);
-            Console.WriteLine("you have");
-            for (int i = 0; i < InvIndex; i++)
-            {
-                Console.WriteLine(InvCon[i].ToString() + " " + Inv[i].ToString() + ", ");
             }
         }
         public Tools GetTools()

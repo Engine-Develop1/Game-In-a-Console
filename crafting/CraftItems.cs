@@ -129,7 +129,7 @@ namespace game_in_console.crafting
                                 case CraftingStations.StoneWorkshop:
                                     break;
                                 case CraftingStations.SmeltingStation:
-                                    C_Player.smeltingS = true;
+                                    C_Player.SetCraftingStations(2);
                                     break;
                                 case CraftingStations.AlloySmelt:
                                     break;
@@ -237,12 +237,12 @@ namespace game_in_console.crafting
                                 case CraftingStations.StoneWorkshop:
                                     break;
                                 case CraftingStations.SmeltingStation:
-                                    C_Player.smeltingS = true;
+                                    C_Player.SetCraftingStations(2);
                                     break;
                                 case CraftingStations.AlloySmelt:
                                     break;
                                 case CraftingStations.Anvil:
-                                    C_Player.anvil = true;
+                                    C_Player.SetCraftingStations(4);
                                     break;
                                 default:
                                     break;

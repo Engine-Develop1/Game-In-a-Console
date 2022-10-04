@@ -3,12 +3,9 @@
     public enum StartOp
     {
         none,
-        save,
-        info,
         mine,
         wood,
         StartDun,//SD
-        end,
         Run,
         How_many_coins_go_i_have, //hmcgih coins
         Shop, //shop

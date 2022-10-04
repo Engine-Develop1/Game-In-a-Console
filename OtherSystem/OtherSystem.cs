@@ -301,7 +301,7 @@ namespace game_in_console.otherSystem
                 con = ItemPoolCon[2];
             }
             if (Re == Items.stone)
-                player.SetCraftingStations(1);
+                player.StoneW = true;
             bool Done = false;
             Console.WriteLine("you got " + con + " " + Re);
             for (int i = 0; i < player.InvIndex; i++)

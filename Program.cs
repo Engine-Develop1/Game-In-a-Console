@@ -105,7 +105,6 @@ namespace game_in_console
             Console.WriteLine("there is a thing coming your way");
             Console.WriteLine(NPCNames.PlayerHelperName + ": hello " + NPCNames.PlayerName + " im "+ NPCNames.PlayerHelperName + " and i am here to help you just say help to me if you need help");
         }
-        bool StopApp = false;
         void Update()
         {
             Player.UpdatePlayer();
@@ -118,13 +117,7 @@ namespace game_in_console
                 User = "StartDun";
             switch (converter.UserToStartOp(User))
             {
-                case StartOp.save:
-
-                    break;
                 case StartOp.none:
-                    break;
-                case StartOp.info:
-                    Player.Info();
                     break;
                 case StartOp.mine:
                     OtherSystem.Mine(Player.PTools.Pickaxe);
@@ -150,23 +143,20 @@ namespace game_in_console
                     Craft(true);
                     break;
                 case StartOp.WorldMap:
-                    Console.WriteLine(WorldMap);
+                        Console.WriteLine(WorldMap);
                     break;
                 case StartOp.TownMap:
-                    Console.WriteLine(TownMap);
+                        Console.WriteLine(TownMap);
                     break;
                 case StartOp.speed:
-                    if (settings.Settings.Dev)
+                    if(settings.Settings.Dev)
                     {
-                        Console.WriteLine("what speed");
-                        Player.SkillsBase.speed = int.Parse(Console.ReadLine());
+                    Console.WriteLine("what speed");
+                    Player.SkillsBase.speed = int.Parse(Console.ReadLine());
                     }
                     break;
                 case StartOp.help:
                     Console.WriteLine();
-                    break;
-                case StartOp.end:
-                    StopApp = true;
                     break;
             }
             Player.UpdatePlayer();

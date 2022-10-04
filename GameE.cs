@@ -3,7 +3,6 @@ using game_in_console.Shoping;
 using game_in_console.NPC.Name;
 using game_in_console.dun;
 using game_in_console.dun.enemys;
-using game_in_console.data.SaveSystem;
 using game_in_console.data.items;
 using game_in_console;
 using game_in_console.otherSystem;
@@ -40,14 +39,9 @@ namespace GameEMain
         public Shop Shop { get; set; }
         public NPCNames NPCNames { get; set; }
         public OtherSystem OtherSystem { get; set; }
-        public save save { get; set; }
         public void Start()
         {
             #region Get Stuff
-            //save
-            save = new save {
-                NPC = NPCNames,
-            };
             //converter
             converter = new Converter();
             //gear

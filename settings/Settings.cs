@@ -7,6 +7,7 @@ namespace settings
     public class Settings
     {
         public static bool Dev { set; get; }
+        public static string PlayerName { get; set; }
         public static bool DunDev { set; get; }
         /// <summary>
         /// the dun level that the player is in

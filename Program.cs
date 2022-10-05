@@ -87,7 +87,9 @@ namespace game_in_console
                 Console.WriteLine("unknown voice:" + "HAHA... i will see forward to that moment and i will kill you, if i need to");
                 Console.WriteLine("unknown voice:" + "MY SELF!!");
             }
+            settings.Settings.PlayerName = PlayerName;
             Start();
+            NPCNames.PlayerName = PlayerName;
             if (PlayerName == "devB" || PlayerName == "BEsBB")
                 new Dev(Player, Password, PlayerName);
             if (PlayerName != "skipto" || PlayerName == "devB" || PlayerName == "BEsBB")
@@ -96,7 +98,6 @@ namespace game_in_console
         }
         void To()
         {
-            NPCNames.PlayerName = PlayerName;
             if (settings.Settings.Dev == false)
             {
                 NPCNames.BolvarDialog(0);

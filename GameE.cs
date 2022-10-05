@@ -44,10 +44,6 @@ namespace GameEMain
         public void Start()
         {
             #region Get Stuff
-            //save
-            save = new save {
-                NPC = NPCNames,
-            };
             //converter
             converter = new Converter();
             //gear
@@ -81,6 +77,13 @@ namespace GameEMain
                 player = Player,
                 NPCNames = NPCNames
             };
+            //save
+            save = new save
+            {
+                NPC = NPCNames,
+                PlayerSave = Player
+            };
+            save.start();
             #endregion
         }
     }

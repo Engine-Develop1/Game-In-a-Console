@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Text;
 using settings;
@@ -24,7 +25,7 @@ namespace game_in_console.data.SaveSystem
         Qsave,
         Qload,
     }
-    public class save : GameE
+    public class save
     {
         public Player PlayerSave;
         public NPCNames NPC;
@@ -36,7 +37,19 @@ namespace game_in_console.data.SaveSystem
         public string playername;
         public save()
         {
-            path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Engine_Develop\Game_in_console\private\saves\" + NPC.PlayerName;
+        }
+        public void start()
+        {
+            string text = "PlayerName:" + playername + "\r\n";
+            playername = Settings.PlayerName;
+            path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Engine_Develop\Game_in_console\private\saves\";
+            DirectoryInfo directoryInfo = new DirectoryInfo(path);
+            directoryInfo.Create();
+            if(File.Exists(path + playername + ".GNCsave") == false)
+            {
+            File.Create(path + playername + ".GNCsave");
+                File.WriteAllText(path, "");
+            }
         }
         public void Save(savemodes savemodes)
         {

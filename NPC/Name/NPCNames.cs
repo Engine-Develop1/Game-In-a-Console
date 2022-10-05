@@ -12,7 +12,7 @@ namespace game_in_console.NPC.Name
         public string ShopKeeperName = "TheShopKeeper";
         public string PlayerHelperName = "elf";
         public string TheWild = "TheWild";
-        public string PlayerName;
+        public string PlayerName { get; set; }
         public string[] Dia_ShopKeeperIn = { "hello what can i do for you?", "it's it not a good day", "The Shop has all the items you need :D" };
         public string[] Dia_ShopKeeperOut = { "thanks you and bye", "bye", "farewell hero" };
         public string[] sayYes = { "yes", "Yes", "Y", "y" };
